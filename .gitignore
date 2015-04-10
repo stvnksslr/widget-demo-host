@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+RUNNING_PID
+.idea
+.sbtserver
+target
+project/target
+project/project
