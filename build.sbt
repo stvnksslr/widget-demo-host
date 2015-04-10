@@ -1,15 +1,17 @@
-name := """minimal-scala"""
+name := """widget-demo-host"""
 
 version := "1.0"
 
 scalaVersion := "2.11.5"
 
-// Change this to another test framework if you prefer
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+mainClass in Compile := Some("HelloSlick")
 
-// Uncomment to use Akka
-//libraryDependencies += "com.typesafe.akka" % "akka-actor_2.11" % "2.3.9"
-
+libraryDependencies ++= List(
+  "com.typesafe.slick" %% "slick" % "2.1.0",
+  "org.slf4j" % "slf4j-nop" % "1.6.4",
+  "com.h2database" % "h2" % "1.3.175",
+  "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+)
 
 
 fork in run := true

@@ -5,3 +5,8 @@ RUNNING_PID
 target
 project/target
 project/project
+.vagrant
+project/.sbtserver
+project/sbt-ui.sbt
+project/.sbtserver.lock
+project/play-fork-run.sbt
