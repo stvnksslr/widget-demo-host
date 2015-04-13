@@ -8,6 +8,8 @@
   "unused": true,
   "browser": true,
   "predef": {
+    "angular": true,
+    "require": true,
     "requirejs": true,
     "require": true,
     "define": true
