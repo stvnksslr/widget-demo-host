@@ -24,7 +24,7 @@ require.config({
     }
 });
 
-require(['angular', 'widgitDemoHost'], function() {
+require(['angular', 'widgitDemo'], function() {
     'use strict';
     console.log('Require Configured, widgitDemo loaded, bootstrapping angular app');
     angular.bootstrap(document.querySelector('html'),['widgitDemo']);

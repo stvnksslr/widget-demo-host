@@ -21,7 +21,7 @@
                 // HOME STATES AND NESTED VIEWS ========================================
                 .state('home', {
                     url: '/home',
-                    templateUrl: require.toUrl('/views/index')
+                    templateUrl: require.toUrl('./home/_home.scala.html')
                 });
         });
         return module;
