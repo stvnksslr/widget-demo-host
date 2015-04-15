@@ -20,8 +20,6 @@
             $stateProvider
                 .state('crudTest', {
                     url: '/crudtest',
-                    controller: 'MyController',
-                    controllerAs: 'MyCtrl',
                     templateUrl: require.toUrl('./_crudTest.scala.html')
                 });
         });
