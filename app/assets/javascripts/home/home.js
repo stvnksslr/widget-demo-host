@@ -13,7 +13,10 @@
                 function UserService() {}
 
                 UserService.createUser = function(userData) {
-                    var createUserPromise = $http.post('/user', userData);
+                    var createUserPromise = $http.post('/user', userData).then(function(response) {
+                        console.log("Steve debug: " + response.data, response.status, response.statusText);
+                        return response;
+                    });
                     return createUserPromise;
                 };
                 UserService.findUsers = function() {
@@ -47,7 +50,7 @@
                     var createNewUser = response.data;
                     console.log('created newUser', newUser);
                     this.createNewUser = createNewUser;
-                });
+                }.bind(this));
 
             };
         }

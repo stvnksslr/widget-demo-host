@@ -21,7 +21,6 @@
                 };
                 UserService.findUsers = function() {
                     var findUsersPromise = $http.get('/users');
-                    console.log('Steve Debug: ' + findUsersPromise);
                     return findUsersPromise;
                 };
                 return UserService;
