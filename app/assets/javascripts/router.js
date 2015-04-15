@@ -3,20 +3,20 @@
 
     var moduleName = 'widgitDemo.router',
 
-        angularDependencies = ['ui.router'];
+        angularDependencies = ['ui.router','widgitDemo.enrollment-router','widgitDemo.crudTest-router'];
 
     define([
         'require',
         'angular',
-        'ui.router'
+        'ui.router',
+        './enrollment/enrollment-router',
+        './crudTest/crudTest-router',
     ], function(require, angular) {
 
         var module = angular.module(moduleName, angularDependencies);
 
         module.config(function($stateProvider, $urlRouterProvider) {
-
             $urlRouterProvider.otherwise('/home');
-
             $stateProvider
                 // HOME STATES AND NESTED VIEWS ========================================
                 .state('home', {

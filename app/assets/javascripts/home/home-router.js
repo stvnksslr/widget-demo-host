@@ -10,9 +10,7 @@
         'angular',
         'ui.router'
     ], function(require, angular) {
-
         var module = angular.module(moduleName, angularDependencies);
-
         return module;
     });
 })();
