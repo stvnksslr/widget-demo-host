@@ -7,11 +7,35 @@
     define([
         'require',
         'angular',
-        'ui.router',
+        'ui.router'
     ], function(require, angular) {
         var module = angular.module(moduleName, angularDependencies);
-        module.controller('MyController', ['$scope']);
-        console.log('hello');
-        return module;
+        module.factory('UserService', ['$http',
+            function ($http) {
+
+                function UserService() {
+
+                }
+
+                UserService.createUser = function (userData) {
+                    var createUserPromise = $http.post('/user', userData);
+                    return createUserPromise;
+                };
+
+                UserService.findUsers = function () {
+                    var findUsersPromise = $http.get('/users');
+                    console.log('Steve Debug: ' + findUsersPromise);
+                    return findUsersPromise;
+                };
+
+                return UserService;
+
+            }
+
+        ]);
+
+// and in some contoller
+
+        module.controller('MyController', ['UserService']);
     });
 })();

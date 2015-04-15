@@ -9,6 +9,8 @@ import org.slf4j.{LoggerFactory, Logger}
 import javax.inject.Singleton
 import play.api.mvc._
 import play.api.libs.json._
+import models._
+import models.JsonFormats._
 
 /**
  * The Users controllers encapsulates the Rest endpoints and the interaction with the MongoDB, via ReactiveMongo
@@ -32,9 +34,6 @@ class Users extends Controller with MongoController {
   // ------------------------------------------ //
   // Using case classes + Json Writes and Reads //
   // ------------------------------------------ //
-
-  import models._
-  import models.JsonFormats._
 
   def createUser = Action.async(parse.json) {
     request =>

@@ -13,6 +13,6 @@ GET        /                    controllers.Application.index(any = "none")
 #GET     /randomUUID                 @controllers.Application.randomUUID
 #
 ## User management API
-#GET     /users                      @controllers.Users.findUsers
+GET     /users                      @controllers.Users.findUsers
 #POST    /user                       @controllers.Users.createUser
 #PUT     /user/:firstName/:lastName  @controllers.Users.updateUser(firstName: String, lastName: String)
