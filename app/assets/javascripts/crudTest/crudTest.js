@@ -54,8 +54,10 @@
                 });
 
             };
-            module.controller('MyController', ['UserService', MyController]);
         }
+
+        module.controller('MyController', ['UserService', MyController]);
+
         return module;
     });
 })();
