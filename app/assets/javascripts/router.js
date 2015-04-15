@@ -3,14 +3,14 @@
 
     var moduleName = 'widgitDemo.router',
 
-        angularDependencies = ['ui.router','widgitDemo.enrollment-router','widgitDemo.crudTest-router'];
+        angularDependencies = ['ui.router','widgitDemo.enrollment-router','widgetDemo.home-router'];
 
     define([
         'require',
         'angular',
         'ui.router',
         './enrollment/enrollment-router',
-        './crudTest/crudTest-router',
+        './home/home-router'
     ], function(require, angular) {
 
         var module = angular.module(moduleName, angularDependencies);

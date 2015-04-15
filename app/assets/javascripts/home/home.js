@@ -42,15 +42,17 @@
             this.createNewUser = function() {
 
                 var newUser = {
-                    firstName: 'Steven',
-                    lastName: 'Kessler'
+                    age: 25,
+                    firstName: 'hats',
+                    lastName: 'Kessler',
+                    active: true
                 };
 
                 UserService.createUser(newUser).then(function(response) {
                     var createNewUser = response.data;
                     console.log('created newUser', newUser);
                     this.createNewUser = createNewUser;
-                }.bind(this));
+                });
 
             };
         }
