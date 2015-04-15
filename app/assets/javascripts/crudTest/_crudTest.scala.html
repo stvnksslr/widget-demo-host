@@ -1,6 +1,7 @@
 <div>
-  Hello
-
-  {{findUsersPromise}}
-
+    <div ng-controller="MyController as MyCtrl">
+      <ul>
+        <li ng-repeat="user in MyCtrl.users">{{user.firstName}}</li>
+      </ul>
+      </div>
 </div>
