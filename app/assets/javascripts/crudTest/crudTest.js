@@ -25,13 +25,8 @@
                     console.log('Steve Debug: ' + findUsersPromise);
                     return findUsersPromise;
                 };
-
-
                 return UserService;
             }]);
-
-
-
 
         function MyController(UserService) {
 
@@ -59,8 +54,8 @@
                         });
 
                     };
+                    module.controller('MyController', ['UserService',MyController]);
                 }
-                module.controller('MyController', ['UserService','MyController']);
-                 return MyController;
+                 return module;
     });
 })();
