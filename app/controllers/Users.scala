@@ -88,7 +88,7 @@ class Users extends Controller with MongoController {
     // let's do our query
     val cursor: Cursor[User] = collection.
       // find all
-      find(Json.obj("active" -> false)).
+      find(Json.obj("enrolled" -> false)).
       // sort them by creation date
       sort(Json.obj("created" -> -1)).
       // perform the query and get a cursor of JsObject

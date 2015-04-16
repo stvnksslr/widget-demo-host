@@ -34,10 +34,10 @@
                 var newUser = {
                     email: 'skessler@gmail.com',
                     password: '212133',
-                    age: 25,
+                    age: "25",
                     firstName: 'steven',
                     lastName: 'kessler',
-                    active: false
+                    enrolled: false
                 };
                 UserService.createUser(newUser).then(function(response) {
                     var createNewUser = response.data;

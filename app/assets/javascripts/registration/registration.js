@@ -2,14 +2,14 @@
     'use strict';
 
     var moduleName = 'widgitDemo.registration',
-        angularDependencies = ['ui.router','ui.bootstrap', 'widgitDemo.registration-router'];
+        angularDependencies = ['ui.router', 'ui.bootstrap', 'widgitDemo.registration-router'];
 
     define([
         'require',
         'angular',
         'ui.router',
         'ui.bootstrap'
-    ], function(require, angular,$scope, $modal) {
+    ], function(require, angular, $scope, $modal) {
         var module = angular.module(moduleName, angularDependencies);
         module.factory('UserService', ['$http',
             function($http) {
@@ -30,22 +30,19 @@
         ]);
 
         function registrationController(UserService) {
-
             UserService.findUsers().then(function(response) {
                 var users = response.data;
                 this.users = users;
             }.bind(this));
-
             this.registerNewUser = function() {
 
-                this.newUser = {active: false};
+                this.newUser = {};
 
-                UserService.createUser(newUser).then(function(response) {
+                UserService.createUser(this.newUser).then(function(response) {
                     var registerNewUser = response.data;
-                    console.log('created newUser', newUser);
-                    this.registerNewUser = createNewUser;
+                    console.log('created newUser', this.newUser);
+                    this.registerNewUser = registerNewUser;
                 });
-
             };
         }
         module.controller('registrationController', ['UserService', registrationController]);

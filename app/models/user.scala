@@ -7,7 +7,7 @@ case class User( email: String,
                  age: String,
                  firstName: String,
                  lastName: String,
-                 active: Boolean)
+                 enrolled: Boolean)
 
 object JsonFormats {
   implicit val userFormat = Json.format[User]
