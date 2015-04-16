@@ -40,9 +40,9 @@
                     enrolled: false
                 };
                 UserService.createUser(newUser).then(function(response) {
-                    var createNewUser = response.data;
+                    var findUserData = response.data;
                     console.log('created newUser', newUser);
-                    this.createNewUser = createNewUser;
+                    this.createNewUser = findUserData;
                 });
             };
         }

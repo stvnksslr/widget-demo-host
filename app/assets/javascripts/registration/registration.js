@@ -34,14 +34,12 @@
                 var users = response.data;
                 this.users = users;
             }.bind(this));
+            this.newUser = {enrolled: false};
             this.registerNewUser = function() {
-
-                this.newUser = {};
-
                 UserService.createUser(this.newUser).then(function(response) {
-                    var registerNewUser = response.data;
+                    var findUserData = response.data;
                     console.log('created newUser', this.newUser);
-                    this.registerNewUser = registerNewUser;
+                    this.registerNewUser = findUserData;
                 });
             };
         }

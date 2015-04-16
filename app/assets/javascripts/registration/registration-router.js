@@ -21,7 +21,9 @@
 
                 .state('registration', {
                     url: '/registration',
-                    templateUrl: require.toUrl('./_registration.scala.html')
+                    templateUrl: require.toUrl('./_registration.scala.html'),
+                    controller: 'registrationController',
+                    controllerAs: 'RegCtrl'
                 });
         });
         return module;

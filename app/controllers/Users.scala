@@ -70,19 +70,23 @@ class Users extends Controller with MongoController {
       }.getOrElse(Future.successful(BadRequest("invalid json")))
   }
 
-  def loginUser(email: String, password:String) = Action.async(parse.json) {
-    request =>
-      request.body.validate[User].map {
-        user =>
-          // find email and and password
-          val loginSelector = Json.obj("email" -> email, "password" -> password)
-          collection.update(loginSelector, user).map {
-            lastError =>
-              logger.debug(s"Successfully updated with LastError: $lastError")
-              Created(s"User Updated")
-          }
-      }.getOrElse(Future.successful(BadRequest("invalid json")))
+  def userLogin = Action.async {
+    val cursor: Cursor[User] = collection.
+      find(Json.obj("email" -> "skessler@gmail.com")).
+      sort(Json.obj("created" -> -1)).
+      cursor[User]
+
+    val futureUsersList: Future[List[User]] = cursor.collect[List]()
+
+    val futurePersonsJsonArray: Future[JsArray] = futureUsersList.map { users =>
+      Json.arr(users)
+    }
+    futurePersonsJsonArray.map {
+      users =>
+        Ok(users(0))
+    }
   }
+
 
   def findUsers = Action.async {
     // let's do our query
