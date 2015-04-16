@@ -4,7 +4,7 @@ import play.api.libs.json.Json
 
 case class User( email: String,
                  password: String,
-                 age: Int,
+                 age: String,
                  firstName: String,
                  lastName: String,
                  active: Boolean)
