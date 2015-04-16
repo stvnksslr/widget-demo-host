@@ -6,7 +6,7 @@
 require.config({
     paths: {
         'angular': '../lib/angularjs/angular',
-        'ui.bootstrap': '../lib/ui-bootstrap/ui-bootstrap-tpls',
+        'ui.bootstrap': '../lib/angular-ui-bootstrap/ui-bootstrap',
         'ui.router': '../lib/angular-ui-router/angular-ui-router'
     },
     // 'Shims' are required for 3rd party libs that don't use some sort of AMD/CommonJS/UMD module definition

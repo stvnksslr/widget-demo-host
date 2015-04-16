@@ -8,6 +8,8 @@ val akkaVersion = "2.3.9"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
+resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releases/"
+
 resolvers += "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
 // front end dependencies 
@@ -44,11 +46,11 @@ scalacOptions ++= Seq(
   "-Ywarn-dead-code"
 )
 
-pipelineStages := Seq(rjs, digest, gzip)
+//pipelineStages := Seq(rjs, digest, gzip)
 
 // RequireJS with sbt-rjs (https://github.com/sbt/sbt-rjs#sbt-rjs)
-RjsKeys.paths += ("jsRoutes" -> ("/jsroutes" -> "empty:"))
+//RjsKeys.paths += ("jsRoutes" -> ("/jsroutes" -> "empty:"))
 
-includeFilter in (Assets, LessKeys.less) := "*.less"
+//includeFilter in (Assets, LessKeys.less) := "*.less"
 
-excludeFilter in (Assets, LessKeys.less) := "_*.less"
+//excludeFilter in (Assets, LessKeys.less) := "_*.less"

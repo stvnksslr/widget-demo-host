@@ -2,15 +2,15 @@
     'use strict';
 
     var moduleName = 'widgitDemo.enrollment',
-        angularDependencies = ['ui.router', 'widgitDemo.enrollment-router'];
+        angularDependencies = ['ui.router','ui.bootstrap', 'widgitDemo.enrollment-router'];
 
     define([
         'require',
         'angular',
         'ui.router',
-    ], function(require, angular) {
+        'ui.bootstrap'
+    ], function(require, angular,$scope, $modal) {
         var module = angular.module(moduleName, angularDependencies);
-        console.log('hello');
         return module;
     });
 })();
