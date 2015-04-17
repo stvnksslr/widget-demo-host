@@ -11,9 +11,9 @@ GET         /                    controllers.Application.index(any = "none")
 GET         /randomUUID          @controllers.Application.randomUUID
 #
 ## User management API
-#GET         /users               @controllers.Users.findUsers
+GET         /hosts               @controllers.AffiliateUsers.findUsers
 #GET         /login               @controllers.Users.userLogin
-#POST        /user                @controllers.Users.createUser
+POST        /host                @controllers.AffiliateUsers.createUser
 
 # template for editing credentials
 #PUT         /user/:firstName/:lastName        @controllers.Users.updateUser(firstName: String, lastName: String)

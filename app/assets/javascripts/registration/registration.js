@@ -15,14 +15,14 @@
             function($http) {
                 function UserService() {}
                 UserService.createUser = function(userData) {
-                    var createUserPromise = $http.post('/user', userData).then(function(response) {
+                    var createUserPromise = $http.post('/host', userData).then(function(response) {
                         console.log("Steve debug: " + response.data, response.status, response.statusText);
                         return response;
                     });
                     return createUserPromise;
                 };
                 UserService.findUsers = function() {
-                    var findUsersPromise = $http.get('/users');
+                    var findUsersPromise = $http.get('/hosts');
                     return findUsersPromise;
                 };
                 return UserService;
@@ -38,7 +38,6 @@
             this.registerNewUser = function() {
                 UserService.createUser(this.newUser).then(function(response) {
                     var findUserData = response.data;
-                    console.log('created newUser', this.newUser);
                     this.registerNewUser = findUserData;
                 });
             };
