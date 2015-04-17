@@ -1,4 +1,9 @@
-name := """widget-demo-host"""
+import com.typesafe.sbt.SbtScalariform._
+import play.PlayScala
+
+import scalariform.formatter.preferences._
+
+name := "widget-demo-host"
 
 version := "1.0"
 
@@ -12,11 +17,17 @@ resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releas
 
 resolvers += "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
+resolvers := ("Atlassian Releases" at "https://maven.atlassian.com/public/") +: resolvers.value
+
+resolvers += Resolver.sonatypeRepo("snapshots")
+
 // front end dependencies 
 libraryDependencies ++= Seq(
   filters,ws,
   cache,
   // WebJars (i.e. client-side) dependencies
+  "com.mohiva" %% "play-silhouette" % "2.0",
+  "net.codingwell" %% "scala-guice" % "4.0.0-beta5",
   "com.google.inject" % "guice" % "3.0",
   "javax.inject" % "javax.inject" % "1",
   "org.webjars" % "requirejs" % "2.1.17",
@@ -46,11 +57,13 @@ scalacOptions ++= Seq(
   "-Ywarn-dead-code"
 )
 
-//pipelineStages := Seq(rjs, digest, gzip)
+//********************************************************
+// Scalariform settings
+//********************************************************
 
-// RequireJS with sbt-rjs (https://github.com/sbt/sbt-rjs#sbt-rjs)
-//RjsKeys.paths += ("jsRoutes" -> ("/jsroutes" -> "empty:"))
+defaultScalariformSettings
 
-//includeFilter in (Assets, LessKeys.less) := "*.less"
-
-//excludeFilter in (Assets, LessKeys.less) := "_*.less"
+ScalariformKeys.preferences := ScalariformKeys.preferences.value
+  .setPreference(FormatXml, false)
+  .setPreference(DoubleIndentClassDeclaration, false)
+  .setPreference(PreserveDanglingCloseParenthesis, true)

@@ -1,15 +1,21 @@
+package app
+
+import com.mohiva.play.silhouette.api.{ Logger, SecuredSettings }
+import utils.di.SilhouetteModule
 import com.google.inject.{Guice, AbstractModule}
 import play.api.GlobalSettings
 import services.{SimpleUUIDGenerator, UUIDGenerator}
 
 /**
- * Set up the Guice injector and provide the mechanism for return objects from the dependency graph.
+ * The global configuration.
  */
-object Global extends GlobalSettings {
+object Global extends GlobalSettings with SecuredSettings with Logger {
 
   /**
-   * Bind types such that whenever UUIDGenerator is required, an instance of SimpleUUIDGenerator will be used.
+   * The Guice dependencies injector.
    */
+ // val injector = Guice.createInjector(new SilhouetteModule)
+
   val injector = Guice.createInjector(new AbstractModule {
     protected def configure() {
       bind(classOf[UUIDGenerator]).to(classOf[SimpleUUIDGenerator])
@@ -17,8 +23,12 @@ object Global extends GlobalSettings {
   })
 
   /**
-   * Controllers must be resolved through the application context. There is a special method of GlobalSettings
-   * that we can override to resolve a given controller. This resolution is required by the Play router.
+   * Loads the controller classes with the Guice injector,
+   * in order to be able to inject dependencies directly into the controller.
+   *
+   * @param controllerClass The controller class to instantiate.
+   * @return The instance of the controller class.
+   * @throws Exception if the controller couldn't be instantiated.
    */
-  override def getControllerInstance[A](controllerClass: Class[A]): A = injector.getInstance(controllerClass)
+  override def getControllerInstance[A](controllerClass: Class[A]) = injector.getInstance(controllerClass)
 }
